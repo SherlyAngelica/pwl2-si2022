@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\UserController;
-// use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\Controller;
-
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,14 +42,14 @@ Route::get('/test', function () {
 });
 
 Route::get('checkout/{camp:slug}', function () {
-    return view('checkout.create','create');
+    return view('checkout.create');
 })->name('checkout.create');
 
 // Route::middleware('auth')->group(function () {
     Route::get('checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
-    Route::get('checkout/{camp}', [CheckoutController::class, 'create'])->name('checkout.create');
+    Route::get('checkout/{camp:slug}', [CheckoutController::class, 'create'])->name('checkout.create');
     Route::post('checkout/{camp}', [CheckoutController::class, 'store'])->name('checkout.store');
-    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
     Route::get('dashboard/checkout/invoice/{checkout}', [CheckoutController::class, 'invoice'])->name('user.checkout.invoice');
 // });
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Laravel\Socialite\Facades\Sociolite;
+use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Auth;
 use Mail;
@@ -12,14 +12,14 @@ use App\Mail\User\AfterRegister;
 class UserController extends Controller
 {
     public function login() {
-        return view (auth.user.login);
+        return view ('auth.user.login');
     }
 
     public function google() {
-        return \Socialite::driver('google')->redirect();
+        return Socialite::driver('google')->redirect();
     }
     public function handleProviderCallback(){
-        $callback = socialite::driver('google')->stateless()->user();
+        $callback = Socialite::driver('google')->stateless()->user();
         $data = [
             'name' => $callback -> getName(),
             'email' => $callback -> getEmail(),
@@ -28,13 +28,13 @@ class UserController extends Controller
         ];
 
         // $user = User::firstOrCreate([ 'email' => $callback -> getEmail()], $data);
-        $User=user::whereEmail($data['email'])->first();
+        $user = User::whereEmail($data['email'])->first();
         if(!$user) {
             $user = User::create($data);
             Mail::to($user->email)->send(new AfterRegister($user));
         }
         Auth::login($user, true);
 
-        return redirect(route('welcome'));
+        return redirect(route('dashboard'));
     }
 }

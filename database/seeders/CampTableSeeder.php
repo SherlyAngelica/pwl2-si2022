@@ -14,17 +14,17 @@ class CampTableSeeder extends Seeder
      */
     public function run() :void
     {
-        $camps = [
+        $camps   = [
         [
-            'title' => "Level Up Package",
-            'slug' =>  "Paket mewah",
-            'price' => 250, 
+            'title' => "Gila Belajar",
+            'slug' =>  "gila-belajar",
+            'price' => 280, 
             'created_at' => date('Y-m-d H:i:s', time()),
             'updated_at' => date('Y-m-d H:i:s', time()),
         ], 
         [
-            'title' => "Starter Package",
-            'slug' =>  "Paket dasar",
+            'title' => "Baru Mulai",
+            'slug' =>  "baru-mulai",
             'price' => 90, 
             'created_at' => date('Y-m-d H:i:s', time()),
             'updated_at' => date('Y-m-d H:i:s', time()),
@@ -34,6 +34,6 @@ class CampTableSeeder extends Seeder
         //     CampTable::create($camp);
         // }
 
-        Camp::insert($camps);
+        camp::insert($camps);
     }
 }

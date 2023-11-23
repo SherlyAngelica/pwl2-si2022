@@ -21,20 +21,10 @@ class AfterCheckout extends Mailable
         $this->checkout = $checkout;
     }
 
-    /** @return $this
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: 'After Checkout',
-        );
-    }
-
 
     public function build()
     {
-        return $this->subject("Register Camp: {$this->checkout->camp->tittle}")
+        return $this->subject("Register Camp: {$this->checkout->camp->title}")
         ->markdown('emails.checkout.afterCheckout', [
             'checkout' => $this->checkout
         ]);
