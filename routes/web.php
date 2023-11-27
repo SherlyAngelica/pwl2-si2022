@@ -17,18 +17,22 @@ use App\Http\Controllers\Controller;
 |
 */
 
+//main page
 Route::get('/', function () {
     return view('index');
 })->name('welcome');
+
 // Route::get('/', [HomeController::class, 'welcome']);
 
 // Route::get('login', function () {
 //     return view('auth.user.login');
 // });
 
+//login
 Route::get("sign-in-google", [UserController::class, 'google'])->name('user.login.google');
 Route::get("auth/google/callback", [UserController::class, 'handleProviderCallback'])->name('user.google.callback');
 
+//dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
@@ -37,6 +41,7 @@ Route::get('checkout/success', function () {
     return view('checkout.success');
 });
 
+//cuma test route aja
 Route::get('/test', function () {
     return 'Test Route bisa atau gak';
 });

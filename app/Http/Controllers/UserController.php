@@ -33,7 +33,7 @@ class UserController extends Controller
             $user = User::create($data);
             Mail::to($user->email)->send(new AfterRegister($user));
         }
-        Auth::login($user, true);
+        Auth::login($user);
 
         return redirect(route('dashboard'));
     }
