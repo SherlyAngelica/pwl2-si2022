@@ -60,12 +60,12 @@ Route::get('checkout/{camp:slug}', function () {
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
     Route::get('dashboard/checkout/invoice/{checkout}', [CheckoutController::class, 'invoice'])->name('user.checkout.invoice');
     //dashboard User
-    Route::prefix('user/dashboard')->namespace('User')->name('user.')->middleware('ensureUserRole::user')->group(function() {
+    Route::prefix('user/dashboard')->namespace('User')->name('user.')->middleware('ensureUserRole:user')->group(function() {
         Route::get('/',[UserDashboard::class, 'index'])->name('dashboard');
     });
     //dashnoard Admin
-    Route::prefix('admin/dashboard')->namespace('Admin')->name('admin.')->middleware('ensureUserRole::admin')->group(function() {
-        Route::get('/',[UserDashboard::class, 'index'])->name('dashboard');
+    Route::prefix('admin/dashboard')->namespace('Admin')->name('admin.')->middleware('ensureUserRole:admin')->group(function() {
+        Route::get('/',[AdminDashboard::class, 'index'])->name('dashboard');
         Route::post('checkout/{checkout}',[AdminCheckout::class,'update'])->name('checkout.update');
     });
 // });

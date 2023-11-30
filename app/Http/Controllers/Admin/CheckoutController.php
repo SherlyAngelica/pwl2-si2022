@@ -13,6 +13,7 @@ class CheckoutController extends Controller
     public function update(Request $request, Checkout $checkout) {
         $checkout->is_paid = true;
         $checkout->save();
+        Mail::to($checkout->user->email) ->send(new Paid($checkout));
         $request->session()->flash('success','Checkout eith ID {$checkout->id} has been updated!');
         return redirect(route('admin.dashboard'));
     }

@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -17,19 +18,13 @@ Route::middleware('guest')->group(function () {
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 
-    // Route::get('login', [AuthenticatedSessionController::class, 'create'])
-    //             ->name('login');
-
-    Route::get('login',function() {
+    Route::get('login', function() {
         return view('auth.user.login');
-    })->name('login.user');
-    
-    // Route::get('login', [UserController::class, 'login'])
-    //             ->name('login');
+    })->name('login');
 
     Route::get('login/admin', [AuthenticatedSessionController::class, 'create'])
                 ->name('login.admin');
-    
+
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
@@ -46,6 +41,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+
     Route::get('verify-email', EmailVerificationPromptController::class)
                 ->name('verification.notice');
 
