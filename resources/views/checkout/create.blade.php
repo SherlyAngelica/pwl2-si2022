@@ -61,8 +61,8 @@
                                 <div class="mb-4">
                                     <label class="form-label">Card Number</label>
                                     <input name="card_number" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="cardNumberCheckout"
-                                    oninput="javascript: if(this.value.lenght > this.maxLenght) this.value = this.value.slice (0, this.naxLenght);"
-                                    maxlenght="16" required>
+                                    oninput="javascript: if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    maxlength="16" required>
                                     @if($errors->has('card_number'))
                                     <p class ="text-danger"> {{$errors->first('card_number')}} </p>
                                     @endif

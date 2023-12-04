@@ -5,8 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Controller\User\DashboardController as UserDashboard;
-use App\Http\Controllers\Controller\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\User\DashboardController as UserDashboard;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\CheckoutController as AdminCheckout;
 /*
 |--------------------------------------------------------------------------

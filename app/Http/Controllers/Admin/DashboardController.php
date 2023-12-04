@@ -13,7 +13,7 @@ class DashboardController extends Controller
     {
         $checkouts = Checkout::with('camp')->get();
         return view('admin.dashboard', [
-            "checkouts" =>$checkouts
+            "checkouts" => $checkouts
         ]);
     }
 }

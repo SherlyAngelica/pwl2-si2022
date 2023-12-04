@@ -32,7 +32,7 @@ class CheckoutController extends Controller
             DB::beginTransaction();
             $data = $request->all();
             $data['user_id'] = Auth::id();
-            $data['camp_id'] = $camp_id;
+            $data['camp_id'] = $camp->id;
 
             $user = Auth::user();
             $user->email =  $data['email'];

@@ -5,7 +5,7 @@ Hi,{{$checkout->user->name}}
 <br> Your Transaction Has Been Confirmed,
 now you can enjoy the benefits of <b>{{$checkout->camp->title}}</b>.
 
-@components('mail::button', ['url' => route('user.dashboard')])
+@component('mail::button', ['url' => route('user.dashboard')])
 My Dashboard
 @endcomponent
 
