@@ -12,11 +12,11 @@ class checkout extends Model
     protected $fillable = [
         'user_id',
         'camp_id',
-        'card_id',
-        'expired',
-        'cvc',
-        'is_paid',
-        'card_number'
+        // 'card_id',
+        // 'expired'
+        // 'cvc',
+        // 'is_paid',
+        // 'card_number'
     ];
     public function setExpiredAttribute($value)
     {
